@@ -1,29 +1,29 @@
 # Generalized RNA-seq pipeline for Gene Differential Expression Analysis and Gene-set Enrichment Analysis
 
-This simple RNA-seq pipeline was written by me, for exposure to NGS-data analysis. This pipeline will
-perform RNA-seq alignment for user specified read data, conduct coverage/abundance counts against a user specified
+This simple RNA-seq pipeline was written by me for exposure to NGS data analysis. This pipeline will
+perform RNA-seq alignment for user-specified read data, conduct coverage/abundance counts against a user-specified
 gene feature structure, and format results for gene-set enrichment analysis. For this pipeline, I will try 
-to generalize the analysis for RNA-seq experiments as much as possible for the purpose of learning the complexities
+to generalize the analysis for RNA-seq experiments as much as possible, for the purpose of learning the complexities
 within RNA-seq data analysis.
 
 ## Tool/software requirements for this pipeline
 1. Linux based command line that uses some sort of shell (I used basic BASH).
 2. Hisat2 was used as the aligner of choice.
 3. FeatureCounts software was used to determine coverage/abundances in all samples.
-4. R statistical programming, along with the bioconductor package.
+4. R statistical programming, along with the Bioconductor package.
 5. Samtools for manipulating BAM files.
 6. ErmineJ software for gene-set enrichment analysis (optional).
 
 ## Data used to test this pipeline
 I used RNA-seq/reference data from this [tutorial](https://github.com/griffithlab/rnaseq_tutorial/wiki/RNAseq-Data) online. 
-The link outlines the type of data, and how the samples were designed for this particular experiment. Reference genome 
+The link outlines the type of data and the design of the samples for this experiment. Reference genome 
 data was indexed using hisat2 with this command: 
 
 ```bash
 hisat2-build *filepath of reference genome* *filepath of intended prefix index files*
 ```
 
-Note that **this pipeline is for paired-end reads**. I will add code for aligning single end reads in the future.
+Note that **this pipeline is for paired-end reads**. I will add code for aligning single-end reads in the future.
 
 ## Instructions for running this pipeline
 1. Clone this repo into where you want it to be on your desktop/laptop.
@@ -40,15 +40,15 @@ Note that **this pipeline is for paired-end reads**. I will add code for alignin
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readME.md<br/>
 
 
-3. Your read data files should follow this naming format, in order for this pipeline to correctly work:
+3. Your read data files should follow this naming format, in order for this pipeline to work correctly:
 
    SAMPLENAME_REPLICATE_PAIREDENDNUMBER.fq
 
-   SAMPLENAME = The name you want to give for the particular sample condition in your experiment.
+   SAMPLENAME = The name you want to give to the particular sample condition in your experiment.
 
    REPLICATE = Which particular replicate is it in your sample condition (2 vs. 3 vs 4, etc). 
 
-   PAIREDENDNUMBER = If the study used paired end replication, then you should have a read data file for each paired end, otherwise there will be only one. Please name them as "R1" vs "R2".
+   PAIREDENDNUMBER = If the study used paired-end replication, then you should have a read data file for each paired end; otherwise, there will be only one. Please name them as "R1" vs "R2".
 
    The example data (paired end data) in this repository uses a naming convention like so:
    
@@ -80,7 +80,7 @@ Note that **this pipeline is for paired-end reads**. I will add code for alignin
 
 ## Gene-set enrichment analysis/functional analysis
    
-   Using the results generated from the shell script, we can now use ErmineJ to conduct Over-representation analysis and on our list of differentially expressed genes. ErmineJ software requires these main input files for Over-representation analysis and Gene Score Resampling:
+   Using the results generated from the shell script, we can now use ErmineJ to conduct Over-representation analysis on our list of differentially expressed genes. ErmineJ software requires these main input files for Over-representation analysis and Gene Score Resampling:
 
    Annotation file: For my tests, I used the [generic human](https://gemma.msl.ubc.ca/annots/Generic_human_noParents.an.txt.gz) GO XML file from ErmineJ. ErmineJ provides users with the option to download annotation files for many organisms from their own [website](https://gemma.msl.ubc.ca/annots/). 
 
@@ -88,22 +88,22 @@ Note that **this pipeline is for paired-end reads**. I will add code for alignin
 
    Expression data: norm-matrix-deseq.txt
 
-   In the ORA representation analysis, default parameters should be selected, with a gene score threshold of 0.05 and max/min gen set size set to 500 and 5 respectively. The best gene scoring option was also selected as default. The negative log of gene scores option was selected for this analysis, since we used p-values in our gene score file. For the gene score resampling analysis, the same default parameters were chosen as well, with the best scoring replicate selection, and 100000 replicates chosen.
+   In the ORA representation analysis, default parameters should be selected, with a gene score threshold of 0.05 and max/min gen set size set to 500 and 5, respectively. The best gene scoring option was also selected as the default. The negative log of gene scores option was selected for this analysis, since we used p-values in our gene score file. For the gene score resampling analysis, the same default parameters were used: best-scoring replicate selection and 100000 replicates.
 
 ## Results
    
    Table diagram of associated cell pathways/functions that had the most enriched genes based on ORA/GSR analysis from ErmineJ software.
 
-   ![alt text](https://github.com/wongak626/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap1.png?raw=true)
+   ![alt text](https://github.com/akaihowong/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap1.png?raw=true)
 
-   Tree diagram of associated cell pathways/functions that had the most enriched genes based on ORA/GSR analysis from ErmineJ software. Proccesses in green are considered to be statistically relevant and enriched in this particular experiment.
+   Tree diagram of associated cell pathways/functions that had the most enriched genes based on ORA/GSR analysis from ErmineJ software. Processes in green are considered to be statistically relevant and enriched in this particular experiment.
 
-   ![alt text](https://github.com/wongak626/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap2.png?raw=true)
-   ![alt text](https://github.com/wongak626/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap3.png)
+   ![alt text](https://github.com/akaihowong/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap2.png?raw=true)
+   ![alt text](https://github.com/akaihowong/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap3.png)
 
 ## Pipeline Diagram
 
-   ![alt text](https://github.com/wongak626/RNA-seq-Pipline/blob/master/readMEimages/Slide1.jpg?raw=true "Pipeline Diagram")
+   ![alt text](https://github.com/akaihowong/RNA-seq-Pipline/blob/master/readMEimages/Slide1.jpg?raw=true "Pipeline Diagram")
 
 ## Future Directions
    - Add single-end read functionality
@@ -112,4 +112,4 @@ Note that **this pipeline is for paired-end reads**. I will add code for alignin
 
 
 ## Contact Information
-Email - wongak626@gmail.com
+Email - akaihowong@gmail.com

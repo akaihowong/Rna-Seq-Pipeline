@@ -94,16 +94,16 @@ Note that **this pipeline is for paired-end reads**. I will add code for alignin
    
    Table diagram of associated cell pathways/functions that had the most enriched genes based on ORA/GSR analysis from ErmineJ software.
 
-   ![alt text](https://github.com/akaihowong/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap1.png?raw=true)
+   ![alt text](https://github.com/akaihowong/Rna-Seq-Pipeline/blob/master/readMEimages/ErmineJsnap1.png?raw=true)
 
    Tree diagram of associated cell pathways/functions that had the most enriched genes based on ORA/GSR analysis from ErmineJ software. Processes in green are considered to be statistically relevant and enriched in this particular experiment.
 
-   ![alt text](https://github.com/akaihowong/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap2.png?raw=true)
-   ![alt text](https://github.com/akaihowong/RNA-seq-Pipline/blob/master/readMEimages/ErmineJsnap3.png)
+   ![alt text](https://github.com/akaihowong/Rna-Seq-Pipeline/blob/master/readMEimages/ErmineJsnap2.png?raw=true)
+   ![alt text](https://github.com/akaihowong/Rna-Seq-Pipeline/blob/master/readMEimages/ErmineJsnap3.png)
 
 ## Pipeline Diagram
 
-   ![alt text](https://github.com/akaihowong/RNA-seq-Pipline/blob/master/readMEimages/Slide1.jpg?raw=true "Pipeline Diagram")
+   ![alt text](https://github.com/akaihowong/Rna-Seq-Pipeline/blob/master/readMEimages/Slide1.jpg?raw=true "Pipeline Diagram")
 
 ## Future Directions
    - Add single-end read functionality
